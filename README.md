@@ -1,7 +1,7 @@
 <h1 align="center">
   <a href="https://standardjs.com"><img src="https://github.com/codedecks-in/Big-Omega-Extension/blob/main/public/logo128.png" alt="LeetHub - Automatically sync your code to GitHub." width="80"></a>
   <br>
-  <a href="https://chrome.google.com/webstore/detail/big-%CF%89-enhance-leetcoding/hfjfkofmpdgbfpkgnknikojbpljnkfkf">Big Ω - Enhance Leetcoding experience
+  <a href="https://chrome.google.com/webstore/detail/big-%CF%89-enhance-leetcoding/hfjfkofmpdgbfpkgnknikojbpljnkfkf">Big Ω - Enhance Leetcode experience
   <br>
   <br>
 </h1>
@@ -27,6 +27,9 @@
   </a>
 </p>
 
+<h2>Find us on Telegram, Chrome-Webstore & Product Hunt</h2>
+
+<a href="https://t.me/codecks"><img align="left" height=200 src="https://media.giphy.com/media/wlR4kWTnwEyY8RwHKM/giphy.gif"></a>
 [![Chrome](https://user-images.githubusercontent.com/53124886/111952712-34f12300-8aee-11eb-9fdd-ad579a1eb235.png)](https://chrome.google.com/webstore/detail/big-%CF%89-enhance-leetcoding/hfjfkofmpdgbfpkgnknikojbpljnkfkf) <a href="https://www.producthunt.com/posts/big-enhance-leetcoding-experience?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-big&#0045;enhance&#0045;leetcoding&#0045;experience" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=384515&theme=light" alt="Big&#0032;Ω&#0032;&#0045;&#0032;Enhance&#0032;Leetcoding&#0032;experience - Programming&#0032;in&#0032;community&#0032;gives&#0032;you&#0032;wings&#0033;&#0033; | Product Hunt" style="width: 350px; height: 154px;" width="250" height="54"/>
 
 ## Big Ω - Demo (YouTube Video):
