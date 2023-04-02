@@ -108,8 +108,8 @@ function OmegaMenu(props) {
 		<div
 			className="dark:hover:bg-dark-fill-3 omega-menu"
 			id="big-omega-menu"
-			//onMouseEnter={() => handleToggleMenu(true)}
-			//onMouseLeave={() => handleToggleMenu(false)}
+			onMouseEnter={() => handleToggleMenu(true)}
+			onMouseLeave={() => handleToggleMenu(false)}
 		>
 			<div className="omega-menu--icon" onClick={handleToggleMenu}>
 				<BigOmegaLogo theme={state.theme} />
