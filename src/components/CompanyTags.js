@@ -4,33 +4,10 @@ import problemToCompanyMatcher from "../resources/company-wise-problem-list";
 import ChevronDown from "./ChevronDown";
 import CloseButton from "./CloseButton";
 
-function CollapseLogo(props) {
-	return (
-		<div
-			style={{
-				right: "10px",
-				padding: "10px",
-				width: "20px",
-				fontSize: "1.3rem",
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center",
-				cursor: "pointer",
-				transition: "all 400ms ease"
-			}}
-			className="dark:hover:bg-dark-fill-3"
-			onClick={props.handleCollapseTags}
-		>
-			Ω
-		</div>
-	);
-}
-
 function CompanyTags(props) {
 	const [state, setState] = useState({
 		companies: [],
 		isExpanded: false,
-		isClosed: false,
 		theme: props.theme,
 		isTagsContainerScrollable: false
 	});
@@ -42,8 +19,7 @@ function CompanyTags(props) {
 
 		setState((prevState) => ({
 			...prevState,
-			companies: problemToCompanyMatcher[host][problem] || [],
-			isClosed: false
+			companies: problemToCompanyMatcher[host][problem] || []
 		}));
 
 		handleURLChange();
@@ -60,23 +36,6 @@ function CompanyTags(props) {
 			}));
 		};
 	}, []);
-
-	useEffect(() => {
-		if (state.isClosed && state.companies.length > 0) {
-			let btns = document.querySelector(
-				"#__next > div > div > div > nav > div > div > div.relative.ml-4.flex.items-center.space-x-4"
-			);
-
-			let dummyElem = document.createElement("div");
-			dummyElem.id = "big-omega-collapse-wrapper";
-
-			btns.appendChild(dummyElem);
-			ReactDOM.render(<CollapseLogo handleCollapseTags={handleCollapseTags} />, dummyElem);
-		} else {
-			let collapseBtn = document.getElementById("big-omega-collapse-wrapper");
-			if (collapseBtn) collapseBtn.remove();
-		}
-	}, [state.isClosed]);
 
 	const handleURLChange = () => {
 		const hasNativeEvent = Object.keys(window).includes("onurlchange");
@@ -108,10 +67,6 @@ function CompanyTags(props) {
 		setState((prevState) => ({ ...prevState, isExpanded: !prevState.isExpanded }));
 	};
 
-	const handleCollapseTags = () => {
-		setState((prevState) => ({ ...prevState, isClosed: !prevState.isClosed }));
-	};
-
 	let shouldCollapse = state.isClosed || state.companies.length === 0;
 
 	return (
@@ -130,7 +85,7 @@ function CompanyTags(props) {
 						style={{
 							display: "flex",
 							padding: "5px",
-							width: `calc(100vw - 100px)`,
+							width: `calc(100vw - 50px)`,
 							overflowX: state.isExpanded ? "hidden" : "scroll",
 							flexWrap: state.isExpanded ? "wrap" : "nowrap"
 						}}
@@ -187,20 +142,6 @@ function CompanyTags(props) {
 						<div style={{ transform: state.isExpanded ? "rotate(180deg)" : "" }}>
 							<ChevronDown theme={state.theme} style={{ transform: state.isExpanded ? "rotate(180deg)" : "" }} />
 						</div>
-					</div>
-					<div
-						style={{
-							right: "10px",
-							padding: "10px",
-							display: "flex",
-							width: "50px",
-							justifyContent: "flex-start",
-							alignItems: "flex-start",
-							cursor: "pointer"
-						}}
-						onClick={handleCollapseTags}
-					>
-						<CloseButton theme={state.theme} />
 					</div>
 				</>
 			)}

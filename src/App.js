@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom/client";
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
+import OmegaMenu from "./components/OmegaMenu";
 import "./App.scss";
-import CompanyTags from "./components/CompanyTags";
 
 function App() {
-	const [state, setState] = useState({});
-
 	useEffect(() => {
 		// window.addEventListener("api-res", (event) => {
 		// 	if (event.detail.contentScriptQuery === "getTours") {
@@ -18,52 +16,44 @@ function App() {
 
 	useEffect(() => {
 		//this.fetchStyles();
-		/**
-		 * TODO
-		 * 1. Companies tag embedding
-		 *      a. detect platform - leetcode, hackerearth,
-		 *      b. detect actually code page route - https://leetcode.com/problems/<problem name>/
-		 *      c. Get div where we want to show company tags from html path/id/tag from dynamic config
-		 *      d. Call API to send problem string and get company tags array as response
-		 *      e. ReactDOM.render(CompanyTags: ReactComponent,path: query path got from step 3)
-		 *      f. Listen from browser url change and call API again if user is on a different problem
-		 */
-		let interval = setInterval(() => {
-			let currentHref = window.location.href;
-			// let currPlatformObj = this.state.platforms.find((platform) => currentHref.includes(platform.problemTriggerURL));
-			// let elem = document.querySelector(currPlatformObj.companiesTagContainer);
-			if (document.body) {
-				let newElem = document.createElement("div");
-				document.body.prepend(newElem);
-				const root = ReactDOM.createRoot(newElem);
 
-				let theme = document.querySelector("html").dataset.theme;
-				root.render(<CompanyTags theme={theme} />, newElem);
+		let theme = document.querySelector("html").dataset.theme;
+		let interval = setInterval(() => {
+			if (document.body) {
+				let btns = document.querySelector(
+					"#__next > div > div > div > nav > div > div > div.relative.ml-4.flex.items-center.space-x-4"
+				);
+
+				let dummyElem = document.createElement("div");
+				dummyElem.id = "big-omega-menu-wrapper";
+
+				btns.appendChild(dummyElem);
+				ReactDOM.render(<OmegaMenu theme={theme} />, dummyElem);
+
 				clearInterval(interval);
 			}
 		}, 3000);
 	}, []);
 
-	const APICallingLogic = (tourContent) => {
-		let reqOptions = {
-			method: "DELETE",
-			headers: {
-				"Content-Type": "application/json"
-			}
-		};
-		window.dispatchEvent(
-			new CustomEvent("api-req", {
-				detail: {
-					contentScriptQuery: "deleteTour",
-					reqOptions: reqOptions,
-					url: `${process.env.REACT_APP_BASE_URL}/v1/api/tour?token=` + state.token + "&tourId=" + tourContent.id
-				}
-			})
-		);
-	};
+	// const APICallingLogic = (tourContent) => {
+	// 	let reqOptions = {
+	// 		method: "DELETE",
+	// 		headers: {
+	// 			"Content-Type": "application/json"
+	// 		}
+	// 	};
+	// 	window.dispatchEvent(
+	// 		new CustomEvent("api-req", {
+	// 			detail: {
+	// 				contentScriptQuery: "deleteTour",
+	// 				reqOptions: reqOptions,
+	// 				url: `${process.env.REACT_APP_BASE_URL}/v1/api/tour?token=` + state.token + "&tourId=" + tourContent.id
+	// 			}
+	// 		})
+	// 	);
+	// };
 
-	// Coming soon 1. Sticky bar on right side
-	return <div id="big-omega-extention"></div>;
+	return <div></div>;
 }
 
 export default App;
