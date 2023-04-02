@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "Big Ω - Enhance Leetcode experience",
 	"description": "Programming in community gives you wings!!",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"icons": {
 		"128": "logo128.png"
 	},
@@ -16,7 +16,8 @@
 	"content_scripts": [
 		{
 			"matches": ["https://leetcode.com/*", "http://leetcode.com/*","https://www.leetcode.com/*", "http://www.leetcode.com/*"],
-			"js": ["preinject.js", "big-omega-tools.js"]
+			"js": ["preinject.js","big-omega-tools.js"],
+            "css": ["big-omega-tools.css"]
 		}
 	],
 	"web_accessible_resources": [

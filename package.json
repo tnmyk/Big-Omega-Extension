@@ -8,9 +8,11 @@
 		"@testing-library/react": "^11.1.1",
 		"@testing-library/user-event": "^12.2.0",
 		"bestzip": "^2.2.1",
+		"node-sass": "^8.0.0",
 		"react": "^18.1.0",
 		"react-dom": "^18.1.0",
 		"react-scripts": "^5.0.1",
+		"react-toggle": "^4.1.3",
 		"web-vitals": "^0.2.4"
 	},
 	"scripts": {
@@ -44,7 +46,6 @@
 	},
 	"devDependencies": {
 		"env-cmd": "^10.1.0",
-		"rewire": "^5.0.0",
-		"sass": "^1.52.0"
+		"rewire": "^5.0.0"
 	}
 }
