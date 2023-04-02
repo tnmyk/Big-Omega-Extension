@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Toggle from "react-toggle";
-import CloseButton from "./CloseButton";
+import BigOmegaLogo from "./BigOmegaLogo";
 import CompanyTags from "./CompanyTags";
-import ProblemTimer from "./ProblemTimer";
+import CodeAnalyse from "./CodeAnalyse";
+import LinkImage from "./LinkImage";
+import GithubLogo from "./GithubLogo";
 
 const constants = {
 	COMPANY_TAGS: "big-omega-company-tags",
@@ -17,10 +19,15 @@ function OmegaMenu(props) {
 
 		isMenuOpen: true,
 		menuOptions: [
-			{ name: "Company Tags", enabled: true }
-			//{ name: "Problem Timer", enabled: false }
+			{ name: "Company Tags", enabled: true },
+			{ name: "Code Analyser", enabled: false }
 		],
-		enabledOptions: []
+		menuLinks: [
+			{ name: "Contribute with us", href: props.AppConstants.githubRepoHref, icon: GithubLogo },
+			{ name: "Leave a review", href: props.AppConstants.leaveAReviewHref, icon: LinkImage }
+		],
+		enabledOptions: [],
+		theme: props.theme
 	});
 
 	/**
@@ -37,8 +44,8 @@ function OmegaMenu(props) {
 		handleToggleCompanyTags(true);
 	}, []);
 
-	const handleToggleMenu = () => {
-		setState((prevState) => ({ ...prevState, isMenuOpen: !prevState.isMenuOpen }));
+	const handleToggleMenu = (flag) => {
+		setState((prevState) => ({ ...prevState, isMenuOpen: flag || !prevState.isMenuOpen }));
 	};
 
 	const handleToggleCompanyTags = (flag) => {
@@ -49,18 +56,17 @@ function OmegaMenu(props) {
 		if (flag) {
 			let newElem = document.createElement("div");
 			newElem.id = constants.COMPANY_TAGS;
-			document.body.prepend(newElem);
+			document.querySelector(props.AppConstants.companyTagsContainerJsPath).prepend(newElem);
 			const root = ReactDOM.createRoot(newElem);
 
-			let theme = document.querySelector("html").dataset.theme;
-			root.render(<CompanyTags theme={theme} />, newElem);
+			root.render(<CompanyTags theme={state.theme} />, newElem);
 		}
 	};
 
-	const handleToggleProblemTimer = (flag) => {
-		let problemTimerElem = document.querySelectorAll("#" + constants.PROBLEM_TIMER);
-		if (problemTimerElem.length > 0) {
-			Array.from(problemTimerElem).forEach((elem) => elem.remove());
+	const handleToggleCodeAnalyser = (flag) => {
+		let codeAnalyseElem = document.querySelectorAll("#" + constants.PROBLEM_TIMER);
+		if (codeAnalyseElem.length > 0) {
+			Array.from(codeAnalyseElem).forEach((elem) => elem.remove());
 		}
 
 		if (flag) {
@@ -69,8 +75,7 @@ function OmegaMenu(props) {
 			document.body.prepend(newElem);
 			const root = ReactDOM.createRoot(newElem);
 
-			let theme = document.querySelector("html").dataset.theme;
-			root.render(<ProblemTimer theme={theme} />, newElem);
+			root.render(<CodeAnalyse theme={state.theme} />, newElem);
 		}
 	};
 
@@ -88,18 +93,26 @@ function OmegaMenu(props) {
 			}
 
 			if (idx === 1) {
-				handleToggleProblemTimer(opt.enabled);
+				handleToggleCodeAnalyser(opt.enabled);
 			}
 		});
 
 		setState((prevState) => ({ ...prevState, menuOptions: opts }));
 	};
 
+	const handleMenuNavigation = (href) => {
+		window.open(href, "_blank").focus();
+	};
+
 	return (
-		<div className="dark:hover:bg-dark-fill-3 omega-menu" id="big-omega-menu">
+		<div
+			className="dark:hover:bg-dark-fill-3 omega-menu"
+			id="big-omega-menu"
+			//onMouseEnter={() => handleToggleMenu(true)}
+			//onMouseLeave={() => handleToggleMenu(false)}
+		>
 			<div className="omega-menu--icon" onClick={handleToggleMenu}>
-				{state.isMenuOpen && <CloseButton />}
-				{!state.isMenuOpen && "Ω"}
+				<BigOmegaLogo theme={state.theme} />
 			</div>
 			{state.isMenuOpen && (
 				<div
@@ -114,6 +127,16 @@ function OmegaMenu(props) {
 						<div onClick={() => handleToggleOption(idx)} className="omega-menu--listItem">
 							<div className="omega-menu--optionName">{option.name}</div>
 							<Toggle defaultChecked={option.enabled} icons={false} onChange={(eve) => handleToggleOption(eve, idx)} />
+						</div>
+					))}
+
+					<div className="omega-menu--seperator"></div>
+					{state.menuLinks.map((option, idx) => (
+						<div onClick={() => handleMenuNavigation(option.href)} className="omega-menu--externalLink">
+							<div>
+								<option.icon theme={state.theme} />
+							</div>{" "}
+							<div>{option.name}</div>
 						</div>
 					))}
 				</div>
