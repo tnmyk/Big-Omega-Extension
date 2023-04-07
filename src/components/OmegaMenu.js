@@ -17,7 +17,7 @@ function OmegaMenu(props) {
 		enableCompanyTags: false,
 		enableProblemTimer: false,
 
-		isMenuOpen: true,
+		isMenuOpen: props.isMenuOpen,
 		menuOptions: [
 			{ name: "Company Tags", enabled: true },
 			{ name: "Code Analyser", enabled: false }
@@ -42,7 +42,7 @@ function OmegaMenu(props) {
 		// 	}
 		// });
 		handleToggleCompanyTags(true);
-	}, []);
+	}, [props.problemSlug]);
 
 	const handleToggleMenu = (flag) => {
 		setState((prevState) => ({ ...prevState, isMenuOpen: flag || !prevState.isMenuOpen }));
@@ -59,7 +59,7 @@ function OmegaMenu(props) {
 			document.querySelector(props.AppConstants.companyTagsContainerJsPath).prepend(newElem);
 			const root = ReactDOM.createRoot(newElem);
 
-			root.render(<CompanyTags theme={state.theme} />, newElem);
+			root.render(<CompanyTags problemSlug={props.problemSlug} theme={state.theme} />, newElem);
 		}
 	};
 
