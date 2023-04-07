@@ -14,7 +14,7 @@ const constants = {
 
 function OmegaMenu(props) {
 	const [state, setState] = useState({
-		enableCompanyTags: false,
+		enableCompanyTags: true,
 		enableProblemTimer: false,
 
 		isMenuOpen: props.isMenuOpen,
@@ -34,14 +34,7 @@ function OmegaMenu(props) {
 	 * Common useEffect
 	 */
 	useEffect(() => {
-		// window.addEventListener("click", (event) => {
-		// 	console.log("click event - ", event);
-		// 	event.stopPropagation();
-		// 	if (event.target.id !== "big-omega-menu") {
-		// 		setState((prevState) => ({ ...prevState, isMenuOpen: false }));
-		// 	}
-		// });
-		handleToggleCompanyTags(true);
+		handleToggleCompanyTags(state.enableCompanyTags);
 	}, [props.problemSlug]);
 
 	const handleToggleMenu = (flag) => {

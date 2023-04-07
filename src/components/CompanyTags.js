@@ -12,13 +12,12 @@ function CompanyTags(props) {
 
 	useEffect(() => {
 		let host = window.location.host;
-		// e.g. /problems/flip-string-to-monotone-increasing/
-		let problem = window.location.pathname.split("/")[2];
+		// props.problemSlug === e.g. /problems/flip-string-to-monotone-increasing/
 		setState((prevState) => ({
 			...prevState,
-			companies: problemToCompanyMatcher[host][problem] || []
+			companies: problemToCompanyMatcher[host][props.problemSlug] || []
 		}));
-	}, []);
+	}, [props.problemSlug]);
 
 	const toggleExpansion = () => {
 		setState((prevState) => ({ ...prevState, isExpanded: !prevState.isExpanded }));
