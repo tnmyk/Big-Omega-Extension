@@ -14,10 +14,10 @@ const constants = {
 
 function OmegaMenu(props) {
 	const [state, setState] = useState({
-		enableCompanyTags: false,
+		enableCompanyTags: true,
 		enableProblemTimer: false,
 
-		isMenuOpen: true,
+		isMenuOpen: props.isMenuOpen,
 		menuOptions: [
 			{ name: "Company Tags", enabled: true },
 			{ name: "Code Analyser", enabled: false }
@@ -34,15 +34,8 @@ function OmegaMenu(props) {
 	 * Common useEffect
 	 */
 	useEffect(() => {
-		// window.addEventListener("click", (event) => {
-		// 	console.log("click event - ", event);
-		// 	event.stopPropagation();
-		// 	if (event.target.id !== "big-omega-menu") {
-		// 		setState((prevState) => ({ ...prevState, isMenuOpen: false }));
-		// 	}
-		// });
-		handleToggleCompanyTags(true);
-	}, []);
+		handleToggleCompanyTags(state.enableCompanyTags);
+	}, [props.problemSlug]);
 
 	const handleToggleMenu = (flag) => {
 		setState((prevState) => ({ ...prevState, isMenuOpen: flag || !prevState.isMenuOpen }));
@@ -59,7 +52,7 @@ function OmegaMenu(props) {
 			document.querySelector(props.AppConstants.companyTagsContainerJsPath).prepend(newElem);
 			const root = ReactDOM.createRoot(newElem);
 
-			root.render(<CompanyTags theme={state.theme} />, newElem);
+			root.render(<CompanyTags problemSlug={props.problemSlug} theme={state.theme} />, newElem);
 		}
 	};
 

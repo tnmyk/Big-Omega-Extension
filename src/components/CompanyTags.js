@@ -12,52 +12,12 @@ function CompanyTags(props) {
 
 	useEffect(() => {
 		let host = window.location.host;
-		// e.g. /problems/flip-string-to-monotone-increasing/
-		let problem = window.location.pathname.split("/")[2];
+		// props.problemSlug === e.g. /problems/flip-string-to-monotone-increasing/
 		setState((prevState) => ({
 			...prevState,
-			companies: problemToCompanyMatcher[host][problem] || []
+			companies: problemToCompanyMatcher[host][props.problemSlug] || []
 		}));
-
-		handleURLChange();
-		window.onurlchange = (event) => {
-			let host = window.location.host;
-			// e.g. /problems/flip-string-to-monotone-increasing/
-			let problem = window.location.pathname.split("/")[2];
-			let theme = document.querySelector("html").dataset.theme;
-			setState((prevState) => ({
-				...prevState,
-				companies: problemToCompanyMatcher[host][problem] || [],
-				theme: theme
-			}));
-		};
-	}, []);
-
-	const handleURLChange = () => {
-		const hasNativeEvent = Object.keys(window).includes("onurlchange");
-		if (!hasNativeEvent) {
-			let oldURL = window.location.href;
-			setInterval(() => {
-				const newURL = window.location.href;
-				if (oldURL === newURL) {
-					return;
-				}
-				const urlChangeEvent = new CustomEvent("urlchange", {
-					detail: {
-						oldURL,
-						newURL
-					}
-				});
-				oldURL = newURL;
-				dispatchEvent(urlChangeEvent);
-			}, 25);
-			window.addEventListener("urlchange", (event) => {
-				if (typeof onurlchange === "function") {
-					window.onurlchange(event);
-				}
-			});
-		}
-	};
+	}, [props.problemSlug]);
 
 	const toggleExpansion = () => {
 		setState((prevState) => ({ ...prevState, isExpanded: !prevState.isExpanded }));
