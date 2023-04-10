@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import OmegaMenu from "./components/OmegaMenu";
 import "./App.scss";
@@ -13,8 +13,11 @@ function App() {
 			githubRepoHref: "https://github.com/codedecks-in/Big-Omega-Extension"
 		},
 		problemSlug: window.location.pathname.split("/")[2],
-		isMenuOpen: true
+		isMenuOpen: true,
+		theme: document.querySelector("html").dataset.theme
 	});
+
+	const themeObserverRef = useRef();
 
 	useEffect(() => {
 		// window.addEventListener("api-res", (event) => {
@@ -24,6 +27,8 @@ function App() {
 		// 		}
 		// 	}
 		// });
+
+		observeTheme();
 
 		if (state.problemSlug !== "") {
 			let interval = setInterval(() => {
@@ -37,8 +42,6 @@ function App() {
 	}, [state.problemSlug]);
 
 	useEffect(() => {
-		//this.fetchStyles();
-
 		handleURLChange();
 		window.onurlchange = (event) => {
 			// e.g. /problems/flip-string-to-monotone-increasing/
@@ -52,6 +55,34 @@ function App() {
 			}));
 		};
 	}, []);
+
+	useEffect(() => {
+		let btns = document.querySelector(state.AppConstants.menuJsPath);
+		if (document.body && btns) {
+			handleInsertOmegaMenu(btns);
+		}
+	}, [state.theme]);
+
+	const observeTheme = () => {
+		if (!themeObserverRef.current) {
+			console.log("inside theme observer");
+			themeObserverRef.current = new MutationObserver(function (mutations) {
+				mutations.forEach(function (mutation) {
+					if (mutation.type === "attributes") {
+						let theme = window.document.querySelector("html").dataset.theme;
+						setState((prevState) => ({
+							...prevState,
+							theme: theme
+						}));
+					}
+				});
+			});
+
+			themeObserverRef.current.observe(window.document.querySelector("html"), {
+				attributes: true //configure it to listen to attribute changes
+			});
+		}
+	};
 
 	const handleURLChange = () => {
 		const hasNativeEvent = Object.keys(window).includes("onurlchange");
@@ -89,13 +120,12 @@ function App() {
 		dummyElem.id = "big-omega-menu-wrapper";
 
 		if (menuBtns) {
-			let theme = document.querySelector("html").dataset.theme;
 			menuBtns.appendChild(dummyElem);
 			ReactDOM.render(
 				<OmegaMenu
 					problemSlug={state.problemSlug}
 					isMenuOpen={state.isMenuOpen}
-					theme={theme}
+					theme={state.theme}
 					AppConstants={state.AppConstants}
 				/>,
 				dummyElem

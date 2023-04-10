@@ -30,6 +30,13 @@ function OmegaMenu(props) {
 		theme: props.theme
 	});
 
+	useEffect(() => {
+		setState((prevState) => ({
+			...prevState,
+			theme: props.theme
+		}));
+	}, [props.theme]);
+
 	/**
 	 * Common useEffect
 	 */
