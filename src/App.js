@@ -12,7 +12,7 @@ function App() {
 			leaveAReviewHref: "https://su5tvpep9cb.typeform.com/to/XYzBkTXf",
 			githubRepoHref: "https://github.com/codedecks-in/Big-Omega-Extension"
 		},
-		problemSlug: window.location.pathname,
+		problemSlug: window.location.pathname.split("/")[2],
 		isMenuOpen: true
 	});
 

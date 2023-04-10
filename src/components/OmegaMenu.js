@@ -19,8 +19,8 @@ function OmegaMenu(props) {
 
 		isMenuOpen: props.isMenuOpen,
 		menuOptions: [
-			{ name: "Company Tags", enabled: true },
-			{ name: "Code Analyser", enabled: false }
+			{ name: "Company Tags", enabled: true }
+			//{ name: "Code Analyser", enabled: false } // Future feature
 		],
 		menuLinks: [
 			{ name: "Contribute with us", href: props.AppConstants.githubRepoHref, icon: GithubLogo },
