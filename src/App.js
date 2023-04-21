@@ -4,17 +4,27 @@ import OmegaMenu from "./components/OmegaMenu";
 import "./App.scss";
 
 function App() {
+	/**
+	 * In Old version there was no dark mode so if
+	 * dataset.theme is undefined then the website
+	 * is running in old ui mode is what we are
+	 * assuming...
+	 */
+	const isOldVersion = document.querySelector("html").dataset.theme ? false : true;
 	const [state, setState] = useState({
 		AppConstants: {
-			menuJsPath: "#__next > div > div > div > nav > div > div > div.relative.ml-4.flex.items-center.space-x-4",
-			companyTagsContainerJsPath:
-				"#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto > div > div",
+			menuJsPath: isOldVersion
+				? "div > div > div > div > div > div#navbar-right-container"
+				: "#__next > div > div > div > nav > div > div > div.relative.ml-4.flex.items-center.space-x-4",
+			companyTagsContainerJsPath: isOldVersion
+				? "div > div > div.main__2_tD > div > div > div > div > div > div > div > div[data-key] > div"
+				: "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto > div > div",
 			leaveAReviewHref: "https://su5tvpep9cb.typeform.com/to/XYzBkTXf",
 			githubRepoHref: "https://github.com/codedecks-in/Big-Omega-Extension"
 		},
 		problemSlug: window.location.pathname.split("/")[2],
 		isMenuOpen: true,
-		theme: document.querySelector("html").dataset.theme
+		theme: isOldVersion ? "light" : document.querySelector("html").dataset.theme
 	});
 
 	const themeObserverRef = useRef();
@@ -46,7 +56,7 @@ function App() {
 		window.onurlchange = (event) => {
 			// e.g. /problems/flip-string-to-monotone-increasing/
 			let problem = window.location.pathname.split("/")[2];
-			let theme = document.querySelector("html").dataset.theme;
+			let theme = isOldVersion ? "light" : document.querySelector("html").dataset.theme;
 			setState((prevState) => ({
 				...prevState,
 				problemSlug: problem,
@@ -69,7 +79,7 @@ function App() {
 			themeObserverRef.current = new MutationObserver(function (mutations) {
 				mutations.forEach(function (mutation) {
 					if (mutation.type === "attributes") {
-						let theme = window.document.querySelector("html").dataset.theme;
+						let theme = isOldVersion ? "light" : document.querySelector("html").dataset.theme;
 						setState((prevState) => ({
 							...prevState,
 							theme: theme

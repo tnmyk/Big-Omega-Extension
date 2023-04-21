@@ -19,7 +19,7 @@ function OmegaMenu(props) {
 
 		isMenuOpen: props.isMenuOpen,
 		menuOptions: [
-			{ name: "Company Tags", enabled: true }
+			{ name: "Company Tags", enabled: props.isMenuOpen }
 			//{ name: "Code Analyser", enabled: false } // Future feature
 		],
 		menuLinks: [
@@ -120,7 +120,8 @@ function OmegaMenu(props) {
 					style={{
 						background: props.theme === "dark" ? "#515151" : "#f8f8ff",
 						color: props.theme === "dark" ? "white" : "#515151",
-						border: props.theme !== "dark" ? "1px solid rgb(64, 135, 241)" : ""
+						border: props.theme !== "dark" ? "1px solid rgb(64, 135, 241)" : "",
+						zIndex: 1
 					}}
 				>
 					{state.menuOptions.map((option, idx) => (
