@@ -4,6 +4,12 @@ import OmegaMenu from "./components/OmegaMenu";
 import "./App.scss";
 
 function App() {
+	/**
+	 * In Old version there was no dark mode so if
+	 * dataset.theme is undefined then the website
+	 * is running in old ui mode is what we are
+	 * assuming...
+	 */
 	const isOldVersion = document.querySelector("html").dataset.theme ? false : true;
 	const [state, setState] = useState({
 		AppConstants: {
@@ -128,7 +134,7 @@ function App() {
 			ReactDOM.render(
 				<OmegaMenu
 					problemSlug={state.problemSlug}
-					isMenuOpen={state.isMenuOpen && !isOldVersion}
+					isMenuOpen={state.isMenuOpen}
 					theme={state.theme}
 					AppConstants={state.AppConstants}
 				/>,
