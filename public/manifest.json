@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "Big Ω - Enhance Leetcode experience",
 	"description": "Programming in community gives you wings!!",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"icons": {
 		"128": "logo128.png"
 	},
