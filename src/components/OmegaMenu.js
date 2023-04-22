@@ -59,7 +59,10 @@ function OmegaMenu(props) {
 			document.querySelector(props.AppConstants.companyTagsContainerJsPath).prepend(newElem);
 			const root = ReactDOM.createRoot(newElem);
 
-			root.render(<CompanyTags problemSlug={props.problemSlug} theme={state.theme} />, newElem);
+			root.render(
+				<CompanyTags isOldVersion={props.isOldVersion} problemSlug={props.problemSlug} theme={state.theme} />,
+				newElem
+			);
 		}
 	};
 

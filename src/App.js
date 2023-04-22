@@ -136,6 +136,7 @@ function App() {
 					problemSlug={state.problemSlug}
 					isMenuOpen={state.isMenuOpen}
 					theme={state.theme}
+					isOldVersion={isOldVersion}
 					AppConstants={state.AppConstants}
 				/>,
 				dummyElem
