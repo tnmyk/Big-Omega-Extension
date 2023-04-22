@@ -19,7 +19,7 @@ function App() {
 			companyTagsContainerJsPath: isOldVersion
 				? "div > div > div.main__2_tD > div > div > div > div > div > div > div > div[data-key] > div"
 				: "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto > div > div",
-			leaveAReviewHref: "https://su5tvpep9cb.typeform.com/to/XYzBkTXf",
+			leaveAReviewHref: "https://docs.google.com/forms/d/e/1FAIpQLSeqvQfMq-3cNwTIctizWmHS84HysDYPRHqPHA8sp5wrDWd5Jw/viewform",
 			githubRepoHref: "https://github.com/codedecks-in/Big-Omega-Extension"
 		},
 		problemSlug: window.location.pathname.split("/")[2],
