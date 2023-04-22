@@ -100,7 +100,7 @@ For Windows:
 ## Code References
 Special thanks to Huan Xu for this [leetcode-company-wise-problems-2022](https://github.com/hxu296/leetcode-company-wise-problems-2022/blob/main/data/leetcode_problems_and_companies.csv) csv file which helps our extension to unlock the information about which companies have asked the problem.
 
-## Contributors
+## Creators [Big Omega Team]
 - [Omkar Ajagunde](https://www.linkedin.com/in/omkarajagunde/)
 - [Gourav R](https://www.linkedin.com/in/grusiya/)
 - [Gaurav Garg](https://www.linkedin.com/in/gaurav-garg-339518141/)
