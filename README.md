@@ -69,7 +69,7 @@ your feedback and constructive criticism, is always appreciated, and we look for
 - Open in any editor of your choice
 - If you want to add/remove code then react code is present under `src/`, which you can edit
 - Now run `npm run build` to create a loadable build/ folder
-- Now to actually test changes we need to load the extention in browser so go to `chrome://extentions` through browser searchbar
+- Now to actually test changes we need to load the extention in browser so go to `chrome://extensions` through browser searchbar
 - Toggle developer mode on top right in order to enable it
 - Click Load unpacked and choose the `build` folder in root of this project
 - Your extention is loaded sucessfully, you don't even need to click it, just go to any leetcode problem and extention will start working
