@@ -24,7 +24,8 @@ function OmegaMenu(props) {
 		],
 		menuLinks: [
 			{ name: "Contribute with us", href: props.AppConstants.githubRepoHref, icon: GithubLogo },
-			{ name: "Leave a review", href: props.AppConstants.leaveAReviewHref, icon: LinkImage }
+			{ name: "Leave a review", href: props.AppConstants.leaveAReviewHref, icon: LinkImage },
+			{ name: "Become exclusive member", href: props.AppConstants.donateHref, icon: LinkImage }
 		],
 		enabledOptions: [],
 		theme: props.theme
