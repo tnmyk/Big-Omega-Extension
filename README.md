@@ -22,8 +22,8 @@
   <a href="https://github.com/codedecks-in/Big-Omega-Extension/issues" alt="Contributors">
     <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" />
   </a>
-  <a href="https://code.publiclab.org#r=all" alt="Contributors">
-    <img src="http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square" />
+  <a href="https://github.com/codedecks-in/Big-Omega-Extension/actions/workflows/github-code-scanning/codeql" alt="CodeQL">
+    <img src="https://github.com/codedecks-in/Big-Omega-Extension/actions/workflows/github-code-scanning/codeql/badge.svg?style=flat-square" />
   </a>
 </p>
 
@@ -38,22 +38,18 @@
 alt="Big Ω - Enhance Leetcoding experience" height="500" border="10" /></a>
 
 ## What is Big Ω?
-Big Ω is a browser extension which enhances your collaborative experience while you are solving coding problems online on various competitive programming websites like 
+Big Ω (Big Omega) is a browser extension which enhances your experience while you are solving coding problems online on various competitive programming websites like Leetcode
 
-1. Leetcode
-2. Hackerrank
+★ Company Tags
+- Reveals information about which companies have asked the problem that you are currently solving and how many times this problem been asked by the same companies
 
-With this tool as of now we have launched a feature that reveals information about which companies have asked the problem that you are currently solving and how many times was same problem been asked by same companies
+★ Question list for a specific Company
+- Provides the company wise list of problems upon click of any specific company tag.
+- Users can click on problem and that same problem is opened in a new tab, currently only new UI is supported to show problem list model, for old UI styles are to be added separately.
 
-The future feature that we will launch will give you the power of peers when you solve the problems, irrespective of any platform where you are solving the problems, the future feature will have the following options - 
+Your feedback and constructive criticism, is always appreciated, and we look forward to make this browser plugin better day by day, step by step.
 
-1. You will be able to see all the people in the world who are solving problems on various platforms
-2. Irrespective of platforms, you will be able have audio/chat conversation with online peers
-3. You will be able to create groups, start coding competitions by putting timer of 30m 45m or any custom time, while tracking each others progress about who solved how many test cases, etc
-4. You will also be able to sync each others screen so that you can explain logic in groups or in person with a first person view
-
-Please let us know about our plugin at our email - manage.bigomega@gmail.com
-your feedback and constructive criticism, is always appreciated, and we look forward to make this browser plugin better day by day, step by step
+Reach out to our Big Omega Team via email - manage.bigomega@gmail.com
   
 ### BONUS: Star this [repository](https://github.com/codedecks-in/Big-Omega-Extension/) for further development of features. If you want a particular feature, simply request for it!
 
