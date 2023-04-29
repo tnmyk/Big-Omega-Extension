@@ -220,9 +220,10 @@
     &--tag{
         margin: 5px;
         padding: 5px 10px 5px 10px;
-        border: none;
-        background: #ffffff1a;
-        color: rgb(255 161 22/var(--tw-text-opacity));
+        // Border Background updated 
+        border: none; // there are no need to add blue border
+        background: #ffffff1a; // this color is better
+        color: rgb(255 161 22/var(--tw-text-opacity)); // for text color this is good
         font-size: .75rem;
         border-radius: 4px;
         white-space: nowrap;
