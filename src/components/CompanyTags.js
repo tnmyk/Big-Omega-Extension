@@ -78,6 +78,7 @@ function CompanyTags(props) {
 								<div
 									onClick={() => handleShowProblemList(true, company.company)}
 									key={company.company + idx}
+									style={{ backgroundColor: state.theme === "light" ? "#000a200d" : null }}
 									className="companyTagsContainer--tag"
 								>
 									<div>{company.company}</div>

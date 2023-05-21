@@ -22,10 +22,11 @@ function App() {
 			leaveAReviewHref:
 				"https://docs.google.com/forms/d/e/1FAIpQLSeqvQfMq-3cNwTIctizWmHS84HysDYPRHqPHA8sp5wrDWd5Jw/viewform",
 			githubRepoHref: "https://github.com/codedecks-in/Big-Omega-Extension",
-			donateHref: "https://imjo.in/FjaHaV"
+			donateHref: "https://imjo.in/FjaHaV",
+			substack: "https://bigomega.substack.com/"
 		},
 		problemSlug: window.location.pathname.split("/")[2],
-		isMenuOpen: true,
+		isMenuOpen: false,
 		theme: isOldVersion ? "light" : document.querySelector("html").dataset.theme
 	});
 
@@ -40,6 +41,11 @@ function App() {
 		// 	}
 		// });
 
+		let substackTriggered = window.localStorage.getItem("big-omega-substack-flag");
+		if (!substackTriggered) {
+			window.open(state.AppConstants.substack, "_blank");
+			window.localStorage.setItem("big-omega-substack-flag", true);
+		}
 		observeTheme();
 
 		if (state.problemSlug !== "") {

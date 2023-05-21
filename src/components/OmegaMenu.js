@@ -19,13 +19,13 @@ function OmegaMenu(props) {
 
 		isMenuOpen: props.isMenuOpen,
 		menuOptions: [
-			{ name: "Company Tags", enabled: props.isMenuOpen }
+			{ name: "Company Tags", enabled: true }
 			//{ name: "Code Analyser", enabled: false } // Future feature
 		],
 		menuLinks: [
 			{ name: "Contribute with us", href: props.AppConstants.githubRepoHref, icon: GithubLogo },
 			{ name: "Leave a review", href: props.AppConstants.leaveAReviewHref, icon: LinkImage },
-			{ name: "Become exclusive member", href: props.AppConstants.donateHref, icon: LinkImage }
+			{ name: "Become exclusive member", href: props.AppConstants.substack, icon: LinkImage }
 		],
 		enabledOptions: [],
 		theme: props.theme
