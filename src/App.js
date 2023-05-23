@@ -50,7 +50,7 @@ function App() {
 		}
 		observeTheme();
 
-		if (state.problemSlug !== "" && state.discSlug==="description") {
+		if ((state.problemSlug !== "" && state.discSlug === "description") || state.discSlug === "") {
 			let interval = setInterval(() => {
 				let btns = document.querySelector(state.AppConstants.menuJsPath);
 				if (document.body && btns) {
@@ -59,7 +59,7 @@ function App() {
 				}
 			}, 1000);
 		}
-	}, [state.problemSlug , state.discSlug]);
+	}, [state.problemSlug, state.discSlug]);
 
 	useEffect(() => {
 		handleURLChange();
@@ -70,7 +70,7 @@ function App() {
 			setState((prevState) => ({
 				...prevState,
 				problemSlug: problem,
-		        discSlug: window.location.pathname.split("/")[3],
+				discSlug: window.location.pathname.split("/")[3],
 				theme: theme,
 				isMenuOpen: false
 			}));
