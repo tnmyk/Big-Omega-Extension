@@ -26,6 +26,8 @@ function App() {
 			substack: "https://bigomega.substack.com/"
 		},
 		problemSlug: window.location.pathname.split("/")[2],
+		discSlug: window.location.pathname.split("/")[3],
+
 		isMenuOpen: false,
 		theme: isOldVersion ? "light" : document.querySelector("html").dataset.theme
 	});
@@ -48,7 +50,7 @@ function App() {
 		}
 		observeTheme();
 
-		if (state.problemSlug !== "") {
+		if (state.problemSlug !== "" && state.discSlug==="description") {
 			let interval = setInterval(() => {
 				let btns = document.querySelector(state.AppConstants.menuJsPath);
 				if (document.body && btns) {
@@ -57,7 +59,7 @@ function App() {
 				}
 			}, 1000);
 		}
-	}, [state.problemSlug]);
+	}, [state.problemSlug , state.discSlug]);
 
 	useEffect(() => {
 		handleURLChange();
@@ -68,6 +70,7 @@ function App() {
 			setState((prevState) => ({
 				...prevState,
 				problemSlug: problem,
+		        discSlug: window.location.pathname.split("/")[3],
 				theme: theme,
 				isMenuOpen: false
 			}));
