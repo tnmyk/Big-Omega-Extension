@@ -65,7 +65,7 @@ function CompanyTags(props) {
 				<div
 					className="companyTagsContainer"
 					style={{
-						overflowX: state.isExpanded ? "hidden" : "scroll",
+						overflowX: state.isExpanded ? "hidden" : "auto",
 						flexWrap: state.isExpanded ? "wrap" : "nowrap"
 					}}
 				>
@@ -87,11 +87,11 @@ function CompanyTags(props) {
 							);
 						})}
 				</div>
-				<div className="companyTagsContainer--chevron" onClick={toggleExpansion}>
+                {state.companies.length > 0 && <div className="companyTagsContainer--chevron" onClick={toggleExpansion}>
 					<div style={{ transform: state.isExpanded ? "rotate(180deg)" : "" }}>
 						<ChevronDown theme={state.theme} style={{ transform: state.isExpanded ? "rotate(180deg)" : "" }} />
 					</div>
-				</div>
+				</div>}
 			</>
 
 			{state.showProblemList && !props.isOldVersion && (
